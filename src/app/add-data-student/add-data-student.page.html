@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title text-center>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <ion-row>
+          <ion-col size="4">
+            <p text-right> รหัสนักศึกษา : </p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-input class="txtField" formControlName="stu_id" ></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <p text-right> คำนำหน้า : </p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-select  formControlName="stu_title"  okText="ยืนยัน" cancelText="ยกเลิก">
+              <ion-select-option value="1">นาย</ion-select-option>
+              <ion-select-option value="0">นางสาว</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <p text-right>ชื่อ : </p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-input class="txtField" formControlName="stu_name"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <p text-right>นามสกุล : </p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-input class="txtField" formControlName="stu_surname"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <p text-right>เบอร์โทรศัพท์ : </p>
+          </ion-col>
+          <ion-col size="8">
+            <ion-input class="txtField" formControlName="stu_phone"></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-col size="12">
+          <ion-button expand="full" type="submit" color="success" [disabled]="studentForm.invalid">
+            <ion-icon name="person-add"></ion-icon>บันทึกข้อมูล
+          </ion-button>
+        </ion-col>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

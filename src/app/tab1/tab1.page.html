@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-row>
+      <ion-col size="2">
+        <ion-segment></ion-segment>
+      </ion-col>
+      <ion-title text-center>ข้อมูลนักศึกษา</ion-title>
+      <ion-col size="2">
+        <ion-segment>
+          <ion-segment-button (click)="gotoaddDataStudent()">
+            <ion-icon name="create" style="color: white"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="ค้นหาชื่อนักศึกษา" ></ion-searchbar>
+  <ion-card *ngFor="let item of dataList">
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="2"><img src="assets/icon/user1.png"></ion-col>
+        <ion-row>
+          <ion-col>
+            <p style="color: brown;">รหัสนักศึกษา : {{item.stu_id}} </p>
+            <p>{{item.stu_title==='0' ? 'นาย' : 'นางสาว'}}{{item.stu_name}} {{item.stu_surname}}</p>
+            เบอร์โทรศัพท์ : {{item.stu_phone}}
+          </ion-col>
+        </ion-row>
+        
+       
+      </ion-row>
+      <ion-row>
+          <ion-col size="6">
+            <ion-button expand="full" color="warning" [routerLink]="['/add-data-student/',item.stu_id]">แก้ไข</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="full" color="danger" (click)="onDelete(item.stu_id)">ลบ</ion-button>
+          </ion-col>
+        </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
